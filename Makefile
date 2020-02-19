@@ -29,6 +29,26 @@ requirements: test_environment
 data: requirements
 	$(PYTHON_INTERPRETER) src/data/make_dataset.py data/raw data/processed
 
+	## Download Files
+	## 1
+	$(PYTHON_INTERPRETER) src/data/get_data/download_file.py https://s3.amazonaws.com/data-sprints-eng-test/data-sample_data-nyctaxi-trips-2009-json_corrigido.json
+
+	## 2
+	$(PYTHON_INTERPRETER) src/data/get_data/download_file.py https://s3.amazonaws.com/data-sprints-eng-test/data-sample_data-nyctaxi-trips-2010-json_corrigido.json
+
+	## 3
+	$(PYTHON_INTERPRETER) src/data/get_data/download_file.py https://s3.amazonaws.com/data-sprints-eng-test/data-sample_data-nyctaxi-trips-2011-json_corrigido.json
+
+    ## 4
+	$(PYTHON_INTERPRETER) src/data/get_data/download_file.py https://s3.amazonaws.com/data-sprints-eng-test/data-sample_data-nyctaxi-trips-2012-json_corrigido.json
+
+    ## Vendor Lookup
+    $(PYTHON_INTERPRETER) src/data/get_data/download_file.py https://s3.amazonaws.com/data-sprints-eng-test/data-vendor_lookup-csv.csv
+
+    ## Payment Lookup
+    $(PYTHON_INTERPRETER) src/data/get_data/download_file.py https://s3.amazonaws.com/data-sprints-eng-test/data-payment_lookup-csv.csv
+
+
 ## Delete all compiled Python files
 clean:
 	find . -type f -name "*.py[co]" -delete
