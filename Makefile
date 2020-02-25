@@ -24,6 +24,10 @@ endif
 requirements: test_environment
 	$(PYTHON_INTERPRETER) -m pip install -U pip setuptools wheel
 	$(PYTHON_INTERPRETER) -m pip install -r requirements.txt
+	$(PYTHON_INTERPRETER) -m pip install dask distributed --upgrade
+	$(PYTHON_INTERPRETER) -m pip install dask[dataframe]
+	$(PYTHON_INTERPRETER) -m pip install ipykernel
+	ipython kernel install --user --name=NYC-taxi-trips-analysis
 
 ## Make Dataset
 data: requirements
@@ -39,15 +43,20 @@ data: requirements
 	## 3
 	$(PYTHON_INTERPRETER) src/data/get_data/download_file.py https://s3.amazonaws.com/data-sprints-eng-test/data-sample_data-nyctaxi-trips-2011-json_corrigido.json
 
-    ## 4
+	## 4
 	$(PYTHON_INTERPRETER) src/data/get_data/download_file.py https://s3.amazonaws.com/data-sprints-eng-test/data-sample_data-nyctaxi-trips-2012-json_corrigido.json
 
-    ## Vendor Lookup
-    $(PYTHON_INTERPRETER) src/data/get_data/download_file.py https://s3.amazonaws.com/data-sprints-eng-test/data-vendor_lookup-csv.csv
+	## Vendor Lookup
+	$(PYTHON_INTERPRETER) src/data/get_data/download_file.py https://s3.amazonaws.com/data-sprints-eng-test/data-vendor_lookup-csv.csv
 
-    ## Payment Lookup
-    $(PYTHON_INTERPRETER) src/data/get_data/download_file.py https://s3.amazonaws.com/data-sprints-eng-test/data-payment_lookup-csv.csv
+	## Payment Lookup
+	$(PYTHON_INTERPRETER) src/data/get_data/download_file.py https://s3.amazonaws.com/data-sprints-eng-test/data-payment_lookup-csv.csv
 
+	## Criar banco de dados SQLite
+	$(PYTHON_INTERPRETER) src/data/database/create_db.py data/interim/taxi_data.db
+
+	## Inserir dados no banco SQLite
+	$(PYTHON_INTERPRETER) src/data/database/populate_db.py data/interim/taxi_data.db
 
 ## Delete all compiled Python files
 clean:

@@ -12,3 +12,8 @@ pytest
 requests
 pandas
 dask
+dask[dataframe]
+db-sqlite3
+matplotlib
+seaborn
+gmaps==0.8.0
