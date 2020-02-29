@@ -7,15 +7,18 @@ contexto de um teste tecnico para a vaga de Engenheiro de dados na DataSprints.
 Para reproduzir as análises é necessário rodar os seguintes comandos no terminal (já é necessário ter o python3 e o 
 venv instalados):
 ```bash
+git clone https://github.com/vittorfp/NYC-Taxi-Trips-analysis.git
+cd NYC-Taxi-Trips-analysis/
+
 python3 -m venv .venv
 source .venv/bin/activate
 
 make data
 ```
 
-Os comandos acima vão criar um *venv*, realizar o download dos dados a partir dos links fornecidos na 
-[especificação do teste](references/Teste%20Técnico%20-%20Engenharia%20de%20Dados.pdf) 
-e realizar sua inserção em um banco de dados SQLite, para que seja possivel realizar consultas SQL nos dados 
+Os comandos acima vão clonar o repositírio, criar um *venv*, realizar o download dos dados a partir dos links 
+fornecidos na [especificação do teste](references/Teste%20Técnico%20-%20Engenharia%20de%20Dados.pdf) (pode dermorar)  
+e realizar sua inserção em um banco de dados SQLite, para que seja possivel realizar consultas SQL nos dados
 (um dos requisitos do teste tecnico).
 
 Após esse comando abra um ``jupyter lab`` na raíz do repositório e fique a vontade para refazer as análises utilizando 
