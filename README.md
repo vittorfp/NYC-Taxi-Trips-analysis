@@ -1,7 +1,32 @@
 NYC Taxi trips analysis
 ==============================
 
-A short description of the project.
+Esse repositório contem os códigos utilizados para realizar a análise da base NYC Taxi trips, mais específicamente no 
+contexto de um teste tecnico para a vaga de Engenheiro de dados na DataSprints.
+
+Para reproduzir as análises é necessário rodar os seguintes comandos no terminal (já é necessário ter o python3 e o 
+venv instalados):
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+
+make data
+```
+
+Os comandos acima vão criar um *venv*, realizar o download dos dados a partir dos links fornecidos na 
+[especificação do teste](references/Teste%20Técnico%20-%20Engenharia%20de%20Dados.pdf) 
+e realizar sua inserção em um banco de dados SQLite, para que seja possivel realizar consultas SQL nos dados 
+(um dos requisitos do teste tecnico).
+
+Após esse comando abra um ``jupyter lab`` na raíz do repositório e fique a vontade para refazer as análises utilizando 
+os notebooks que estão dentro da pasta *notebooks*. Observação: Os notebooks devem ser executados com o kernel 
+``NYC-taxi-trips-analysis`` (também foi criado com o comando rodado, mais detalhes no [Makefile](Makefile)) que possui 
+todas as dependências necessárias instaladas.
+
+O arquivo [Análise.html](notebooks/Análise.html) é uma versão em HTML do notebook utilizado para realizar as 
+análises.
+
+
 
 Project Organization
 ------------
