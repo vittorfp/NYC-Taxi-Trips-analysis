@@ -29,7 +29,9 @@ requirements: test_environment
 
 ## Make Dataset
 data: requirements
-	$(PYTHON_INTERPRETER) src/data/make_dataset.py data/raw data/processed
+    mkdir -p data/raw
+    mkdir -p data/interim
+    mkdir -p data/processed
 
 	## Download Files
 	## 1

@@ -1,5 +1,4 @@
-from os import path
-import requests
+from os import system
 import logging
 import click
 
@@ -13,19 +12,13 @@ def download_file(file_url):
     logger = logging.getLogger(__name__)
     file_name = file_url.split('/')[-1]
 
-    if path.isfile(output_folder + file_name):
-        logger.info('File has already been downloaded: {}'.format(file_name))
-        return
-
     try:
         logger.info('Downloading file: {}'.format(file_name))
-        response = requests.get(file_url, allow_redirects=True)
-        open(output_folder + file_name, 'w').write(response.text)
+        system('wget {} -O {} -nc'.format(file_url, output_folder + file_name))
+        logger.info('Successfully downloaded file: {}'.format(file_name))
     except:
         logger.info('Failed to download: {}'.format(file_name))
         return
-    finally:
-        logger.info('Successfully downloaded file: {}'.format(file_name))
 
 
 if __name__ == '__main__':
