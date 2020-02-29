@@ -29,9 +29,9 @@ requirements: test_environment
 
 ## Make Dataset
 data: requirements
-    mkdir -p data/raw
-    mkdir -p data/interim
-    mkdir -p data/processed
+	mkdir -p data/raw
+	mkdir -p data/interim
+	mkdir -p data/processed
 
 	## Download Files
 	## 1
