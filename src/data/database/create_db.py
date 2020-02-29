@@ -55,7 +55,6 @@ def create_db(db_path):
         )'''
     )
 
-
     # payment lookup table
     c.execute(
         '''CREATE TABLE payment_lookup
