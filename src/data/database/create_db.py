@@ -20,7 +20,7 @@ def create_db(db_path):
     c.execute(
         '''CREATE TABLE vendor_lookup
             (
-                vendor_id text, 
+                vendor_id text PRIMARY KEY, 
                 name text, 
                 address text, 
                 city text, 
@@ -32,9 +32,18 @@ def create_db(db_path):
             )'''
     )
 
+    # payment lookup table
+    c.execute(
+        '''CREATE TABLE payment_lookup
+            (
+                payment_type text PRIMARY KEY, 
+                payment_lookup text
+            )'''
+    )
+
     c.execute(
         '''CREATE TABLE trips
-            (
+            (   
                 vendor_id text,
                 pickup_datetime date,
                 dropoff_datetime date,
@@ -51,17 +60,10 @@ def create_db(db_path):
                 surcharge float,
                 tip_amount float,
                 tolls_amount float,
-                total_amount float
+                total_amount float,
+                FOREIGN KEY(vendor_id) REFERENCES vendor_lookup(vendor_id),
+                FOREIGN KEY(payment_type) REFERENCES payment_lookup(payment_type)
         )'''
-    )
-
-    # payment lookup table
-    c.execute(
-        '''CREATE TABLE payment_lookup
-            (
-                payment_type text, 
-                payment_lookup text
-            )'''
     )
 
     conn.commit()
