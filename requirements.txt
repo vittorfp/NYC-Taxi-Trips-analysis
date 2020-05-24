@@ -3,6 +3,7 @@
 
 # external requirements
 click
+boto3
 Sphinx
 coverage
 awscli
@@ -15,3 +16,4 @@ db-sqlite3
 matplotlib
 seaborn
 gmaps==0.8.0
+multiprocess

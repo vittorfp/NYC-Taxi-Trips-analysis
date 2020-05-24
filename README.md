@@ -29,6 +29,21 @@ todas as dependências necessárias instaladas.
 O arquivo [Análise.html](notebooks/Análise.html) é uma versão em HTML do notebook utilizado para realizar as
 análises.
 
+Simulação de Stream
+------------
+
+Foi criado um script para simular o *stream* dos dados. Pode ser acessado utilizando o comando a seguir.
+
+````
+make stream
+````
+
+O script inicia o envio de dados para um Kinesis Data Stream, e espera que o bash possua as variaveis de ambiente  `AWS_ACCESS_KEY_ID` e
+`AWS_SECRET_ACCESS_KEY` exportadas no BASH e que o comando `make data` já tenha sido rodado. A taxa de transferencia de dados do *stream* fica limitada à taxa de Upload 
+da conexão local de internet.
+
+A estrutura utilizada para processamento foi provisionada 
+na AWS utilizando Terraform, e tem seus detalhes explicados no repositório https://github.com/vittorfp/aws-sample-stream.
 
 
 Project Organization

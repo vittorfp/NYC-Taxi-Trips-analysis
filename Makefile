@@ -27,6 +27,11 @@ requirements: test_environment
 	$(PYTHON_INTERPRETER) -m pip install ipykernel
 	ipython kernel install --user --name=NYC-taxi-trips-analysis
 
+## Simulate Stream
+stream:
+	$(PYTHON_INTERPRETER) src/stream/simulate_stream.py
+
+
 ## Make Dataset
 data: requirements
 	mkdir -p data/raw
